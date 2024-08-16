@@ -1,0 +1,25 @@
+namespace Workingwithfiles
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            var path = @"C:\Users\jdelgadosoto\Documents\Nombres.txt";
+            string newpath = @"C:\Users\jdelgadosoto\Documents\names.txt";
+
+            var content = File.ReadAllText(path);
+            Console.WriteLine(content);
+
+            List<string> names = content.Split(',').ToList();
+            names.Sort();
+           
+            File.WriteAllLines(newpath, names);
+
+            
+            Console.WriteLine(File.ReadAllText(newpath));
+
+
+        }
+    }
+}
