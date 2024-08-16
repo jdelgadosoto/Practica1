@@ -1,0 +1,62 @@
+namespace WorkingwithText
+{
+    class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            
+            string input;
+            string space = string.Empty;
+            List<string> paragraphsList = new List<string>();
+
+            Console.WriteLine("Please enter the text: \n");
+
+            while (true)
+            {
+                input = Console.ReadLine();
+
+                // Check for end of input
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    if (!string.IsNullOrWhiteSpace(space))
+                    {
+                        paragraphsList.Add(space.Trim());
+                        
+                    }
+                    break;
+                }
+                else
+                {
+                    space += input + "\n\n";
+                }
+
+                
+            }
+
+            //int ParCount = paragraphsList.Count;
+            string text = String.Join("\n", paragraphsList);
+
+            char[] WordDelimiters = new char[] { ' ', ',', '?', '!', '.' ,'\n'};
+            string[] words = text.Split(WordDelimiters,StringSplitOptions.RemoveEmptyEntries);
+            int WordCount = words.Length;
+
+            Console.WriteLine("The word count is: {0}", WordCount);
+
+            char[] SentDelimiters = new char[] { '?', '!', '.','\n' };
+            string[] sentences = text.Split(SentDelimiters, StringSplitOptions.RemoveEmptyEntries);
+            int SentCount = sentences.Length;
+            Console.WriteLine("The sentences count is: {0}", SentCount);
+
+            foreach (string par in paragraphsList)
+            {
+                string[] ParDelimiters = new string[] { "\n" };
+                string[] paragraphs = text.Split(ParDelimiters, StringSplitOptions.RemoveEmptyEntries);
+                int ParCount = paragraphs.Length;
+
+                Console.WriteLine("The sentences count is: {0}", ParCount);
+            }
+
+        }
+    }
+}
