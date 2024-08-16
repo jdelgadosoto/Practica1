@@ -1,0 +1,58 @@
+namespace Practice1Books
+{
+
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Book book1 = new Book("Scott Pilgrim vs the world vI", "Bryan Lee O'Malley", "12345");
+            Book book2 = new Book("Veitemil leguas de viaje submarino", "Julio Verne", "20482");
+            Book book3 = new Book("Moby Dick", "Herman Melville", "18390");
+            
+
+            bool SameISBN = (book1.ISBN == book2.ISBN);
+            Console.WriteLine("The books 'Veitemil leguas de viaje submarino' and 'Moby Dick' have the same ISBN? {0}", SameISBN);
+
+
+            var library = new List<string>(args);
+            library.Add(book2.Title);
+            library.Add(book1.Title);
+            library.Add(book3.Title);
+            foreach (var item in library)
+            {
+                Console.WriteLine(item);
+            }
+
+            library.Remove(book2.Title);
+            foreach (var item in library)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+    }
+
+
+namespace Practice1Books
+{
+    public class Book
+    {
+        public string Title;
+        public string Author;
+        public string ISBN;
+
+      
+        public Book(string title, string author, string isbn) 
+        { 
+        
+            this.Title = title;
+            this.Author = author;
+            this.ISBN = isbn;
+
+            Console.WriteLine(Title + ", " + author + ", " + isbn);
+        }
+
+       
+    }
+}
