@@ -1,0 +1,57 @@
+namespace ATM
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int balance = 100;
+
+            while (true)
+            {
+                Console.WriteLine("Please chose an option:\n 1. Check balance\n 2. Make a deposit\n 3. Withdraw money\n 4. Exit");
+
+                var choice = Console.ReadLine();
+
+                if (choice == "1")
+                {
+                    Console.WriteLine("$" + balance);
+                }
+                else if (choice == "2")
+                {
+                    Console.WriteLine("Please enter the amount you want to deposit:\n");
+                    var a = Console.ReadLine();
+                    int deposit = int.Parse(a);
+
+                    balance = balance + deposit;
+
+                    Console.WriteLine("Your new balance is: ${0}", balance);
+
+                }
+                else if (choice == "3")
+                {
+
+                    Console.WriteLine("Please enter the amount you want to withdraw: \n");
+                    var b = Console.ReadLine();
+                    int withdraw = int.Parse(b);
+
+                    if (withdraw > balance)
+                    {
+                        Console.WriteLine("You do not have enough money in your acount");
+                        Console.WriteLine("Your balance is: ${0}", balance);
+                    }
+                    else
+                    {
+                        balance = balance - withdraw;
+                        Console.WriteLine("Your new balance is: ${0}", balance);
+
+                    }
+
+                }
+                else if (choice == "4")
+                    break;
+                
+
+            }
+        }
+    }
+}
