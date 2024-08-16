@@ -1,0 +1,62 @@
+namespace StudentsGrades
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var Grades = new List<int>() { 90, 97, 88, 76, 84 };
+            while (true) 
+            {
+                Console.WriteLine("Please select an option:\n" +
+                    "1. Add grade\n" +
+                    "2. Display average\n" +
+                    "3. Display highest grade\n" +
+                    "4. Display lowest grade\n" +
+                    "5. Display all grades\n");
+
+               
+                 var option = Console.ReadLine();
+                
+
+                if (option == "1")
+                {
+                    Console.WriteLine("Enter the grade you would like to add:\n");
+                    var newgrade = Console.ReadLine();
+                    int Grade = Convert.ToInt32(newgrade);
+                    Grades.Add(Grade);
+
+                }
+                else if (option == "2")
+                {
+                    var SumGrades = Grades.Sum();
+                    var average = SumGrades / Grades.Count;
+                    Console.WriteLine(average);
+                }
+                else if(option == "3"){
+
+                    Console.Write("The highest grade is : " + Grades.Max() + "\n");
+                }
+                else if (option == "4")
+                {
+                    Console.Write("The lowest grade is : " + Grades.Min() + "\n");
+                    
+
+                }
+                else if (option == "5")
+                {
+                    Console.WriteLine("All the grades are: \n");
+                    var OrderGrades = Grades.OrderBy(x => x);
+                    foreach (var Grade in OrderGrades)
+                    {
+                        Console.WriteLine(Grade);
+
+                    }
+
+
+                }
+                else break;
+
+
+            }
+        }
+    }
